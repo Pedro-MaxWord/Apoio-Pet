@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apoio Pet</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #fffaf4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+
+    header {
+      background-color: #ff914d;
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.2em;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+
+    .banner {
+      background-image: url('https://images.unsplash.com/photo-1601758124515-de5b1a3c1f3e?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .banner h2 {
+      font-size: 2.5em;
+      background-color: rgba(0,0,0,0.4);
+      padding: 15px 25px;
+      border-radius: 10px;
+    }
+
+  
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    .sobre {
+      text-align: center;
+    }
+
+    .sobre h2 {
+      color: #ff914d;
+      margin-bottom: 15px;
+    }
+
+    .servicos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .servico {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .servico:hover {
+      transform: translateY(-5px);
+    }
+
+    .servico img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .servico h3 {
+      color: #ff914d;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #ff914d;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 5px 0;
+    }
+
+  
+    .login-container {
+      background: #fff;
+      width: 350px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .login-container h2 {
+      color: #ff914d;
+      margin-bottom: 15px;
+    }
+
+    input[type="text"], input[type="password"], input[type="email"] {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #ff914d;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #ff7725;
+    }
+
+    .toggle {
+      color: #555;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #logout-btn {
+      display: none;
+      background-color: #ff914d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🐶 Apoio Pet</h1>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#login">Login</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <button id="logout-btn">Sair</button>
+
+  <section class="banner">
+    <h2>Cuidando com amor de quem te dá amor</h2>
+  </section>
+
+
+  <section id="login" class="container">
+    <div class="login-container" id="login-container">
+      <h2>Login</h2>
+      <input type="text" id="loginUser" placeholder="Usuário" required>
+      <input type="password" id="loginPass" placeholder="Senha" required>
+      <button onclick="login()">Entrar</button>
+      <p class="toggle" onclick="toggleForms()">Não tem conta? Cadastre-se</p>
+    </div>
+
+    <div class="login-container" id="register-container" style="display:none;">
+      <h2>Cadastrar</h2>
+      <input type="text" id="regUser" placeholder="Usuário" required>
+      <input type="email" id="regEmail" placeholder="Email" required>
+      <input type="password" id="regPass" placeholder="Senha" required>
+      <button onclick="register()">Cadastrar</button>
+      <p class="toggle" onclick="toggleForms()">Já tem conta? Faça login</p>
+    </div>
+  </section>
+
+  <section id="sobre" class="continer sobre">
+    <h2>Quem Somos</h2>
+    <p>A Apoio Pet é uma empresa dedicada ao bem-estar e cuidado de animais de estimação. 
+    Oferecemos serviços de banho, tosa, consultas veterinárias e muito mais — 
+    tudo com carinho e profissionalismo.</p>
+  </section>
+
+  <section id="servicos" class="container">
+    <h2 style="text-align:center; color:#ff914d;">Nossos Serviços</h2>
+    <div class="servicos">
+      <div class="servico">
+        <img src="retrato-em-close-up-cao-de-yorkshire.jpg" alt="Banho e tosa">
+        <h3>Banho & Tosa</h3>
+        <p>Cuidados estéticos e higiênicos para deixar seu pet ainda mais lindo e saudável.</p>
+        <a href="banho-tosa.html">Saiba mais</a>
+      </div>
+      <div class="servico">
+        <img src="veterinario-cuidando-de-animal-de-estimacao.jpg" alt="Veterinário">
+        <h3>Atendimento Veterinário</h3>
+        <p>Profissionais capacitados prontos para cuidar da saúde do seu melhor amigo.</p>
+        <a href="veterinario.html">Saiba mais</a>
+      </div>
+      <div class="servico">
+        <img src="cao-adoravel-com-dono-na-pet-shop.jpg" alt="Pet Shop">
+        <h3>Pet Shop</h3>
+        <p>Ambiente confortável e seguro para quando você precisar se ausentar.</p>
+        <a href="petshop.html">Saiba mais</a>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <section class="container"></section>
+    <p> Niteroi, 676 - Betim, MG</p>
+    <p> Suporte: (31) 99251-8193 | apoiopetofc@gmail.com.br</p>
+    <p>&copy; 2025 Apoio Pet - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    function toggleForms() {
+      const login = document.getElementById("login-container");
+      const register = document.getElementById("register-container");
+      login.style.display = login.style.display === "none" ? "block" : "none";
+      register.style.display = register.style.display === "none" ? "block" : "none";
+    }
+
+    function register() {
+      const user = document.getElementById("regUser").value;
+      const email = document.getElementById("regEmail").value;
+      const pass = document.getElementById("regPass").value;
+
+      if (user && email && pass) {
+        localStorage.setItem("user", JSON.stringify({ user, email, pass }));
+        alert("Cadastro realizado com sucesso!");
+        toggleForms();
+      } else {
+        alert("Por favor, preencha todos os campos!");
+      }
+    }
+
+    function login() {
+      const user = document.getElementById("loginUser").value;
+      const pass = document.getElementById("loginPass").value;
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (storedUser && user === storedUser.user && pass === storedUser.pass) {
+        alert("Login realizado com sucesso!");
+        document.getElementById("logout-btn").style.display = "block";
+        document.getElementById("login").style.display = "none";
+      } else {
+        alert("Usuário ou senha incorretos!");
+      }
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      alert("Você saiu da conta.");
+      document.getElementById("logout-btn").style.display = "none";
+      document.getElementById("login").style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
